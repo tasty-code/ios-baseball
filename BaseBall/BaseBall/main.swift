@@ -34,3 +34,19 @@ private func compareCorrectNumber(with number: [Int]){
     print("\(strikeCount) 스트라이크, \(ballCount) 볼")
 }
 
+// MARK: - 게임 진행 함수
+private func startGame(){
+    correctNumber = createRandomNumber()
+    
+    while tryCount > 0 {
+        tryCount -= 1
+        
+        let randomNumber = createRandomNumber()
+        print("임의의 수 : \(randomNumber)")
+        
+        compareCorrectNumber(with: randomNumber)
+        print("남은 기회 : \(tryCount)")
+    }
+}
+
+startGame()
