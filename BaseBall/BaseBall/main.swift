@@ -18,3 +18,19 @@ private func createRandomNumber() -> [Int]{
     return randomNumber
 }
 
+// MARK: - 임의의 수와 입력 수 비교 함수
+private func compareCorrectNumber(with number: [Int]){
+    var strikeCount = 0
+    var ballCount = 0
+    
+    for i in 0...2{
+        if correctNumber.firstIndex(of: correctNumber[i]) == number.firstIndex(of: correctNumber[i]){
+            strikeCount += 1
+        }else if number[number.firstIndex(of: correctNumber[i]) ?? 0] == correctNumber[i]{
+            ballCount += 1
+        }
+    }
+    
+    print("\(strikeCount) 스트라이크, \(ballCount) 볼")
+}
+
