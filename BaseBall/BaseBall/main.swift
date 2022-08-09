@@ -24,9 +24,9 @@ private func compareCorrectNumber(with number: [Int]){
     var ballCount = 0
     
     for i in 0...2{
-        if correctNumber.firstIndex(of: correctNumber[i]) == number.firstIndex(of: correctNumber[i]){
+        if number[i] == correctNumber[i]{
             strikeCount += 1
-        }else if number[number.firstIndex(of: correctNumber[i]) ?? 0] == correctNumber[i]{
+        }else if correctNumber.contains(number[i]){
             ballCount += 1
         }
     }
@@ -37,6 +37,7 @@ private func compareCorrectNumber(with number: [Int]){
 // MARK: - 게임 진행 함수
 private func startGame(){
     correctNumber = createRandomNumber()
+    print("정답 \(correctNumber)")
     
     while tryCount > 0 {
         tryCount -= 1
