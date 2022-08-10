@@ -38,3 +38,28 @@ func strikeBallCheck() {
     chance -= 1
     numbers.removeAll()
 }
+
+func gameStart() {
+    makeRandomNumber()
+    
+    while chance != 0 {
+        while numbers.count < 3 {
+            let number = Int.random(in: 1...9)
+            if numbers.contains(number) {
+                continue
+            } else {
+                numbers.append(number)
+            }
+        }
+        
+        print("임의의 수 : ", terminator: " ")
+        for number in numbers {
+            print(number, terminator: " ")
+        }
+        print()
+        
+        strikeBallCheck()
+    }
+}
+
+gameStart()
