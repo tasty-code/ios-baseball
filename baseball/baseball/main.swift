@@ -60,6 +60,24 @@ func gameStart() {
         
         strikeBallCheck()
     }
+    checkNumber.removeAll()
+    chance = 9
+    gameMenu()
 }
 
-gameStart()
+func gameMenu() {
+    print("1. 게임시작")
+    print("2. 게임종료")
+    print("원하는 기능을 선택해주세요 : ", terminator: "")
+    let menu = Int(readLine()!)!
+    
+    if menu == 1 {
+        gameStart()
+    } else if menu == 2 {
+        print("게임 종료")
+    } else {
+        gameMenu()
+    }
+}
+
+gameMenu()
