@@ -21,3 +21,20 @@ func makeRandomNumber() {
         }
     }
 }
+
+func strikeBallCheck() {
+    var strike = 0
+    var ball = 0
+    
+    for i in 0...2 {
+        if numbers[i] == checkNumber[i] {
+            strike += 1
+        } else if numbers.contains(checkNumber[i]) {
+            ball += 1
+        }
+    }
+    
+    print("\(strike) 스트라이크 \(ball) 볼")
+    chance -= 1
+    numbers.removeAll()
+}
