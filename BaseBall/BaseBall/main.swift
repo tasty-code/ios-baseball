@@ -21,38 +21,56 @@ func createRandomNumber() -> [Int] {
     return randomNumber
 }
 
-func compareCorrectNumber(with number: [Int]) {
+func compareCorrectNumber(with number: [Int]) -> Int {
     var strikeCount = 0
     var ballCount = 0
     
-    for i in 0...2 {
-        
-        if number[i] == correctNumber[i] {
-            
+    for i in 0...2{
+        if number[i] == correctNumber[i]{
             strikeCount += 1
-            
-        }else if correctNumber.contains(number[i]) {
-            
+        }else if correctNumber.contains(number[i]){
             ballCount += 1
-            
         }
     }
     
     print("\(strikeCount) 스트라이크, \(ballCount) 볼")
+    return strikeCount
 }
 
 func startGame() {
-    correctNumber = createRandomNumber()
-    while tryCount > 0 {
+    while true {
+        print("1. 게임 시작\n2. 게임 종료\n원하는 기능을 선택해주세요 : ", terminator: "")
+        let answer = Int(readLine()!)!
         
-        tryCount -= 1
-        
-        let randomNumber = createRandomNumber()
-        print("임의의 수 : \(randomNumber.map{ String($0) }.joined(separator: " "))")
-        
-        compareCorrectNumber(with: randomNumber)
-        print("남은 기회 : \(tryCount)")
-        
+        if answer == 1{
+            correctNumber = createRandomNumber()
+
+            while true {
+                print("숫자 3개를 띄어쓰기로 구분하여 입력해주세요.\n중복 숫자는 허용하지 않습니다.\n입력 : ", terminator: "")
+                let randomNumber = readLine()!.split(separator: " ").map{Int($0)!}
+                
+                if randomNumber.count == 3{
+                    tryCount -= 1
+                    print("남은 기회 : \(tryCount)")
+                    
+                    if compareCorrectNumber(with: randomNumber) == 3 {
+                        print("사용자 승리...!")
+                        break
+                    }
+                    
+                    if tryCount == 0 {
+                        print("컴퓨터 승리...!")
+                        break
+                    }
+                }else {
+                    print("입력이 잘못되었습니다")
+                }
+            }
+        }else if answer == 2 {
+            return
+        }else {
+            print("입력이 잘못되었습니다")
+        }
     }
 }
 
