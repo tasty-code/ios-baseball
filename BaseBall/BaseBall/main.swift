@@ -24,10 +24,15 @@ func compareCorrectNumber(with number: [Int]){
     var ballCount = 0
     
     for i in 0...2{
+        
         if number[i] == correctNumber[i]{
+            
             strikeCount += 1
+            
         }else if correctNumber.contains(number[i]){
+            
             ballCount += 1
+            
         }
     }
     
@@ -39,6 +44,7 @@ func startGame(){
     correctNumber = createRandomNumber()
     
     while tryCount > 0 {
+        
         tryCount -= 1
         
         let randomNumber = createRandomNumber()
@@ -46,6 +52,7 @@ func startGame(){
         
         compareCorrectNumber(with: randomNumber)
         print("남은 기회 : \(tryCount)")
+        
     }
 }
 
