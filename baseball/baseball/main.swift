@@ -36,7 +36,7 @@ func compareStrikeBall() {
     numbers.removeAll()
 }
 
-func gameStart() {
+func startBaseballGame() {
     makeRandomNumber()
     
     while remainingChance != 0 {
@@ -69,7 +69,7 @@ func gameMenu() {
     let menu = Int(readLine()!)!
     
     if menu == 1 {
-        gameStart()
+        startBaseballGame()
     } else if menu == 2 {
         print("게임 종료")
     } else {
