@@ -11,8 +11,12 @@ var correctNumber = [Int]()
 var tryCount = 9
 
 func createRandomNumber() -> [Int] {
-    var randomNumber = [Int.random(in: 1...3), Int.random(in: 4...6), Int.random(in: 7...9)]
-    randomNumber.shuffle()
+    var randomNumber: [Int] = [Int.random(in: 1...9)]
+    
+    while randomNumber.count < 3 {
+        randomNumber.append(Int.random(in: 1...9))
+        randomNumber = Array(Set(randomNumber))
+    }
 
     return randomNumber
 }
@@ -39,7 +43,6 @@ func compareCorrectNumber(with number: [Int]) {
 
 func startGame() {
     correctNumber = createRandomNumber()
-    
     while tryCount > 0 {
         
         tryCount -= 1
