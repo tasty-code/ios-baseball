@@ -25,13 +25,13 @@ func compareCorrectNumber(with number: [Int]) {
     var strikeCount = 0
     var ballCount = 0
     
-    for i in 0...2{
+    for i in 0...2 {
         
-        if number[i] == correctNumber[i]{
+        if number[i] == correctNumber[i] {
             
             strikeCount += 1
             
-        }else if correctNumber.contains(number[i]){
+        }else if correctNumber.contains(number[i]) {
             
             ballCount += 1
             
