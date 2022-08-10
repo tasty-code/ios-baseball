@@ -42,7 +42,7 @@ func startGame(){
         tryCount -= 1
         
         let randomNumber = createRandomNumber()
-        print("임의의 수 : \(randomNumber)")
+        print("임의의 수 : \(randomNumber.map{ String($0) }.joined(separator: " "))")
         
         compareCorrectNumber(with: randomNumber)
         print("남은 기회 : \(tryCount)")
