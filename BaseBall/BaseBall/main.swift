@@ -37,36 +37,43 @@ func compareCorrectNumber(with number: [Int]) -> Int {
     return strikeCount
 }
 
+func playGame(){
+    correctNumber = createRandomNumber()
+
+    while true {
+        print("숫자 3개를 띄어쓰기로 구분하여 입력해주세요.\n중복 숫자는 허용하지 않습니다.\n입력 : ", terminator: "")
+        let randomNumber = readLine()!.split(separator: " ").map{Int($0)!}
+        
+        if randomNumber.count == 3{
+            tryCount -= 1
+            print("남은 기회 : \(tryCount)")
+            
+            if compareCorrectNumber(with: randomNumber) == 3 {
+                print("사용자 승리...!")
+                break
+            }
+            
+            if tryCount == 0 {
+                print("컴퓨터 승리...!")
+                break
+            }
+        }else {
+            print("입력이 잘못되었습니다")
+        }
+    }
+}
+
+func selectMenu() -> Int{
+    print("1. 게임 시작\n2. 게임 종료\n원하는 기능을 선택해주세요 : ", terminator: "")
+    let answer = Int(readLine()!)!
+    return answer
+}
+
 func startGame() {
     while true {
-        print("1. 게임 시작\n2. 게임 종료\n원하는 기능을 선택해주세요 : ", terminator: "")
-        let answer = Int(readLine()!)!
-        
-        if answer == 1{
-            correctNumber = createRandomNumber()
-
-            while true {
-                print("숫자 3개를 띄어쓰기로 구분하여 입력해주세요.\n중복 숫자는 허용하지 않습니다.\n입력 : ", terminator: "")
-                let randomNumber = readLine()!.split(separator: " ").map{Int($0)!}
-                
-                if randomNumber.count == 3{
-                    tryCount -= 1
-                    print("남은 기회 : \(tryCount)")
-                    
-                    if compareCorrectNumber(with: randomNumber) == 3 {
-                        print("사용자 승리...!")
-                        break
-                    }
-                    
-                    if tryCount == 0 {
-                        print("컴퓨터 승리...!")
-                        break
-                    }
-                }else {
-                    print("입력이 잘못되었습니다")
-                }
-            }
-        }else if answer == 2 {
+        if selectMenu() == 1{
+            playGame()
+        }else if selectMenu() == 2 {
             return
         }else {
             print("입력이 잘못되었습니다")
