@@ -37,7 +37,6 @@ private func compareCorrectNumber(with number: [Int]){
 // MARK: - 게임 진행 함수
 private func startGame(){
     correctNumber = createRandomNumber()
-    print("정답 \(correctNumber)")
     
     while tryCount > 0 {
         tryCount -= 1
