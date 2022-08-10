@@ -7,18 +7,16 @@
 import Foundation
 
 var numbers: [Int] = []
-var checkNumber:[Int] = []
+var userNumbers: [Int] = []
+var randomNumber: Set<Int> = []
 var remainingChance: Int = 9
 
 func makeRandomNumber() {
-    while checkNumber.count < 3 {
+    while randomNumber.count < 3 {
         let number = Int.random(in: 1...9)
-        if checkNumber.contains(number) {
-            continue
-        } else {
-            checkNumber.append(number)
-        }
+        randomNumber.insert(number)
     }
+    numbers = Array<Int>(randomNumber)
 }
 
 func compareStrikeBall() {
@@ -26,9 +24,9 @@ func compareStrikeBall() {
     var ball = 0
     
     for i in 0...2 {
-        if numbers[i] == checkNumber[i] {
+        if numbers[i] == userNumbers[i] {
             strike += 1
-        } else if numbers.contains(checkNumber[i]) {
+        } else if numbers.contains(userNumbers[i]) {
             ball += 1
         }
     }
@@ -57,9 +55,9 @@ func gameStart() {
         }
         print()
         
-        strikeBallCheck()
+        compareStrikeBall()
     }
-    checkNumber.removeAll()
+    randomNumber.removeAll()
     remainingChance = 9
     gameMenu()
 }
