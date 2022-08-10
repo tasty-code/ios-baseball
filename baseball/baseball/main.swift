@@ -8,7 +8,7 @@ import Foundation
 
 var numbers: [Int] = []
 var checkNumber:[Int] = []
-var remainingChance: Int = 9
+var chance: Int = 9
 
 func makeRandomNumber() {
     while checkNumber.count < 3 {
@@ -34,14 +34,14 @@ func strikeBallCheck() {
     }
     
     print("\(strike) 스트라이크 \(ball) 볼")
-    remainingChance -= 1
+    chance -= 1
     numbers.removeAll()
 }
 
 func gameStart() {
     makeRandomNumber()
     
-    while remainingChance != 0 {
+    while chance != 0 {
         while numbers.count < 3 {
             let number = Int.random(in: 1...9)
             if numbers.contains(number) {
@@ -60,7 +60,7 @@ func gameStart() {
         strikeBallCheck()
     }
     checkNumber.removeAll()
-    remainingChance = 9
+    chance = 9
     gameMenu()
 }
 
