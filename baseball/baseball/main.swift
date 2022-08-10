@@ -31,50 +31,33 @@ func compareStrikeBall() {
         }
     }
     
-    print("\(strike) 스트라이크 \(ball) 볼")
     remainingChance -= 1
-    numbers.removeAll()
+    print("\(strike) 스트라이크 \(ball) 볼")
 }
 
 func startBaseballGame() {
     makeRandomNumber()
     
     while remainingChance != 0 {
-        while numbers.count < 3 {
+        while userNumbers.count < 3 {
             let number = Int.random(in: 1...9)
-            if numbers.contains(number) {
+            if userNumbers.contains(number) {
                 continue
             } else {
-                numbers.append(number)
+                userNumbers.append(number)
             }
         }
         
         print("임의의 수 : ", terminator: " ")
-        for number in numbers {
+        for number in userNumbers {
             print(number, terminator: " ")
         }
         print()
         
         compareStrikeBall()
+        userNumbers.removeAll()
     }
-    randomNumber.removeAll()
     remainingChance = 9
-    gameMenu()
 }
 
-func gameMenu() {
-    print("1. 게임시작")
-    print("2. 게임종료")
-    print("원하는 기능을 선택해주세요 : ", terminator: "")
-    let menu = Int(readLine()!)!
-    
-    if menu == 1 {
-        startBaseballGame()
-    } else if menu == 2 {
-        print("게임 종료")
-    } else {
-        gameMenu()
-    }
-}
-
-gameMenu()
+startBaseballGame()
