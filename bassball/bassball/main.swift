@@ -15,3 +15,25 @@ func makeNumbers() -> Array<Int> {
 
     return [firstNumber, secondNumber, thirdNumber]
 }
+
+func judgeNumber(computerNumbers: Array<Int>, userNumbers: Array<Int>) -> Array<Int> {
+    
+    var strike = 0
+    var ball = 0
+    
+    var i = 0
+    
+    while i < computerNumbers.count {
+        if computerNumbers[i] == userNumbers[i] {
+            strike += 1
+            i += 1
+        } else if userNumbers.contains(computerNumbers[i])  {
+            ball += 1
+            i += 1
+        } else {
+            i += 1
+        }
+    }
+    
+    return [strike, ball]
+}
