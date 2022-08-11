@@ -30,7 +30,7 @@ func compareCorrectNumber(with number: [Int]) -> [Int] {
             
             strikeCount += 1
             
-        }else if correctNumber.contains(number[i]) {
+        } else if correctNumber.contains(number[i]) {
             
             ballCount += 1
             
