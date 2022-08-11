@@ -48,7 +48,6 @@ func compare(_ gameRandomNumbers: [Int], and userNumbers: [Int]) -> String {
     var ballCount: Int = 0
     var roundResult: String = ""
     
-
     for i in 0...2 {
         if gameRandomNumbers[i] == userNumbers[i] {
             strikeCount += 1
