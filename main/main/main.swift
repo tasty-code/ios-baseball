@@ -2,6 +2,7 @@ import Foundation
 
 let randomNumber: Array<Int> = makeRandomNumber()
 var tryCount: Int = 9
+var strike = 0, ball = 0
 
 func makeRandomNumber() -> Array<Int> {
     var set: Set<Int> = []
@@ -13,12 +14,7 @@ func makeRandomNumber() -> Array<Int> {
     return Array(set)
 }
 
-func playGame() {
-    let userNumber = makeRandomNumber()
-    var strike = 0, ball = 0
-    
-    print("임의의 수 : \(userNumber[0]) \(userNumber[1]) \(userNumber[2])")
-    
+func checkStrikeOrBall(userNumber: Array<Int>) {
     for i in 0...2 {
         if userNumber[i] == randomNumber[i] {
             strike += 1
@@ -26,6 +22,16 @@ func playGame() {
             ball += 1
         }
     }
+}
+
+func playGame() {
+    let userNumber = makeRandomNumber()
+    strike = 0
+    ball = 0
+    
+    print("임의의 수 : \(userNumber[0]) \(userNumber[1]) \(userNumber[2])")
+    checkStrikeOrBall(userNumber: userNumber)
+   
     print("\(strike) 스트라이크, \(ball) 볼")
     
     tryCount -= 1
