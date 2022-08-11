@@ -1,5 +1,8 @@
 import Foundation
 
+let randomNumber: Array<Int> = makeRandomNumber()
+var tryCount: Int = 9
+
 func makeRandomNumber() -> Array<Int> {
     var arr: Array<Int> = []
     
@@ -44,8 +47,5 @@ func playGame() {
     
     playGame()
 }
-
-let randomNumber = makeRandomNumber()
-var tryCount = 9
 
 playGame()
