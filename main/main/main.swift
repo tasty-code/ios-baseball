@@ -14,15 +14,15 @@ func makeRandomNumber() -> Array<Int> {
 }
 
 func playGame() {
-    let myNumber = makeRandomNumber()
+    let userNumber = makeRandomNumber()
     var strike = 0, ball = 0
     
-    print("임의의 수 : \(myNumber[0]) \(myNumber[1]) \(myNumber[2])")
+    print("임의의 수 : \(userNumber[0]) \(userNumber[1]) \(userNumber[2])")
     
     for i in 0...2 {
-        if myNumber[i] == randomNumber[i] {
+        if userNumber[i] == randomNumber[i] {
             strike += 1
-        } else if randomNumber.contains(myNumber[i]) {
+        } else if randomNumber.contains(userNumber[i]) {
             ball += 1
         }
     }
