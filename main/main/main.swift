@@ -5,13 +5,13 @@ var tryCount: Int = 9
 var strike = 0, ball = 0
 
 func makeRandomNumber() -> Array<Int> {
-    var set: Set<Int> = []
+    var nonduplicateSet: Set<Int> = []
     
-    while set.count < 3 {
-        set.update(with: Int.random(in: 1...9))
+    while nonduplicateSet.count < 3 {
+        nonduplicateSet.update(with: Int.random(in: 1...9))
     }
     
-    return Array(set)
+    return Array(nonduplicateSet)
 }
 
 func checkStrikeOrBall(userNumber: Array<Int>) {
