@@ -23,7 +23,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		FADC55E728A2268100574AB4 /* bassball */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = bassball; sourceTree = BUILT_PRODUCTS_DIR; };
+		FADC55E728A2268100574AB4 /* baseball */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = baseball; sourceTree = BUILT_PRODUCTS_DIR; };
 		FADC55EA28A2268100574AB4 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -49,7 +49,7 @@
 		FADC55E828A2268100574AB4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				FADC55E728A2268100574AB4 /* bassball */,
+				FADC55E728A2268100574AB4 /* baseball */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -65,9 +65,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		FADC55E628A2268100574AB4 /* bassball */ = {
+		FADC55E628A2268100574AB4 /* baseball */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FADC55EE28A2268100574AB4 /* Build configuration list for PBXNativeTarget "bassball" */;
+			buildConfigurationList = FADC55EE28A2268100574AB4 /* Build configuration list for PBXNativeTarget "baseball" */;
 			buildPhases = (
 				FADC55E328A2268100574AB4 /* Sources */,
 				FADC55E428A2268100574AB4 /* Frameworks */,
@@ -77,9 +77,9 @@
 			);
 			dependencies = (
 			);
-			name = bassball;
+			name = baseball;
 			productName = bassball;
-			productReference = FADC55E728A2268100574AB4 /* bassball */;
+			productReference = FADC55E728A2268100574AB4 /* baseball */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -97,7 +97,7 @@
 					};
 				};
 			};
-			buildConfigurationList = FADC55E228A2268100574AB4 /* Build configuration list for PBXProject "bassball" */;
+			buildConfigurationList = FADC55E228A2268100574AB4 /* Build configuration list for PBXProject "baseball" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -110,7 +110,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				FADC55E628A2268100574AB4 /* bassball */,
+				FADC55E628A2268100574AB4 /* baseball */,
 			);
 		};
 /* End PBXProject section */
@@ -261,7 +261,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		FADC55E228A2268100574AB4 /* Build configuration list for PBXProject "bassball" */ = {
+		FADC55E228A2268100574AB4 /* Build configuration list for PBXProject "baseball" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FADC55EC28A2268100574AB4 /* Debug */,
@@ -270,7 +270,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FADC55EE28A2268100574AB4 /* Build configuration list for PBXNativeTarget "bassball" */ = {
+		FADC55EE28A2268100574AB4 /* Build configuration list for PBXNativeTarget "baseball" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FADC55EF28A2268100574AB4 /* Debug */,
