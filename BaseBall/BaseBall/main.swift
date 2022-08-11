@@ -25,17 +25,10 @@ func compareCorrectNumber(with number: [Int]) -> [Int] {
     var ballCount = 0
     
     for i in 0...2 {
-        
-        if number[i] == correctNumber[i] {
-            
-            strikeCount += 1
-            
-        } else if correctNumber.contains(number[i]) {
-            
-            ballCount += 1
-            
-        }
+        if number[i] == correctNumber[i] { strikeCount += 1 }
     }
+    
+    ballCount = (Set(number).intersection(Set(correctNumber)).count) - strikeCount
     
     return [strikeCount, ballCount]
 }
@@ -64,7 +57,6 @@ func checkExistWinner(tryCount: Int, randomNumber: [Int]) -> Bool {
 func startGame() {
     correctNumber = createRandomNumber()
     while tryCount > 0 {
-        
         tryCount -= 1
         
         let randomNumber = createRandomNumber()
