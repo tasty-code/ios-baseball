@@ -4,17 +4,13 @@ let randomNumber: Array<Int> = makeRandomNumber()
 var tryCount: Int = 9
 
 func makeRandomNumber() -> Array<Int> {
-    var arr: Array<Int> = []
+    var set: Set<Int> = []
     
-    for _ in 0...2 {
-        var randomNum = Int.random(in: 1...9)
-        while arr.contains(randomNum) == true {
-            randomNum = Int.random(in: 1...9)
-        }
-        arr.append(randomNum)
+    while set.count < 3 {
+        set.update(with: Int.random(in: 1...9))
     }
     
-    return arr
+    return Array(set)
 }
 
 func playGame() {
