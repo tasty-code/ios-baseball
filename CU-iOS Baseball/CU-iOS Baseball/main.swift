@@ -8,17 +8,10 @@ func startingGame() {
     let gameRandomNumbers: [Int] = getRandomNumbers()
 
     while chance > 0 {
-        chance -= 1
 
         let userRandomNumbers: [Int] = getRandomNumbers()
         
-        print("임의의 수 : ",terminator: "")
-        
-        for element in userRandomNumbers {
-            print("\(element) ",terminator: "")
-        }
-        
-        print()
+        print("임의의 수 : \(userRandomNumbers[0]) \(userRandomNumbers[1]) \(userRandomNumbers[2])")
 
         let roundResult: String = compare(gameRandomNumbers, and: userRandomNumbers)
         
@@ -26,7 +19,8 @@ func startingGame() {
             print("사용자 승리!")
             return
         }
-
+        
+        chance -= 1
         print("남은 기회 : \(chance)")
     }
 
