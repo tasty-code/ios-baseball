@@ -37,3 +37,35 @@ func judgeNumber(computerNumbers: Array<Int>, userNumbers: Array<Int>) -> Array<
     
     return [strike, ball]
 }
+
+let computerNumber = makeNumbers()
+
+var userNumber: Array<Int>
+
+var tryCount = 9
+
+var judged = [0, 0]
+
+for i in 1...tryCount {
+
+    userNumber = makeNumbers()
+    judged = judgeNumber(computerNumbers: computerNumber, userNumbers: userNumber)
+    
+    print("임의의 수 : ", terminator:"")
+    for n in 0...2 {
+        print(userNumber[n], terminator:" ")
+        if n == 2 {
+            print("")
+        }
+    }
+    
+    if judged[0] == 3 {
+        print("사용자 승리...!")
+    } else if tryCount - i == 0{
+        print("컴퓨터 승리...!")
+    }
+
+    print("\(judged[0]) 스트라이크, \(judged[1]) 볼")
+    print("남은 기회 : \(tryCount - i)")
+
+}
