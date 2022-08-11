@@ -40,21 +40,24 @@ func compareCorrectNumber(with number: [Int]) -> [Int] {
     return [strikeCount, ballCount]
 }
 
-func checkWinner(tryCount: Int, randomNumber: [Int]) -> Bool {
+func checkExistWinner(tryCount: Int, randomNumber: [Int]) -> Bool {
     let strikeBallResult = compareCorrectNumber(with: randomNumber)
+    
     if strikeBallResult[0] == 3 {
         print("사용자 승리...!")
-        print("\(strikeBallResult[0]) 스트라이크, \(strikeBallResult[1]) 볼")
-        return true
     }
     
     if tryCount == 0 {
         print("컴퓨터 승리...!")
-        print("\(strikeBallResult[0]) 스트라이크, \(strikeBallResult[1]) 볼")
-        return true
+        
     }
     
     print("\(strikeBallResult[0]) 스트라이크, \(strikeBallResult[1]) 볼")
+    print("남은 기회 : \(tryCount)")
+    
+    if strikeBallResult[0] == 3 || tryCount == 0 {
+        return true
+    }
     
     return false
 }
@@ -68,12 +71,9 @@ func startGame() {
         let randomNumber = createRandomNumber()
         print("임의의 수 : \(randomNumber.map{ String($0) }.joined(separator: " "))")
         
-        if checkWinner(tryCount: tryCount, randomNumber: randomNumber) {
-            print("남은 기회 : \(tryCount)")
+        if checkExistWinner(tryCount: tryCount, randomNumber: randomNumber) {
             break
         }
-        
-        print("남은 기회 : \(tryCount)")
     }
 }
 
