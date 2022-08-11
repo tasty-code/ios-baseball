@@ -49,7 +49,6 @@ func checkExistWinner(tryCount: Int, randomNumber: [Int]) -> Bool {
     
     if tryCount == 0 {
         print("컴퓨터 승리...!")
-        
     }
     
     print("\(strikeBallResult[0]) 스트라이크, \(strikeBallResult[1]) 볼")
@@ -71,9 +70,7 @@ func startGame() {
         let randomNumber = createRandomNumber()
         print("임의의 수 : \(randomNumber.map{ String($0) }.joined(separator: " "))")
         
-        if checkExistWinner(tryCount: tryCount, randomNumber: randomNumber) {
-            break
-        }
+        if checkExistWinner(tryCount: tryCount, randomNumber: randomNumber) { break }
     }
 }
 
