@@ -29,12 +29,12 @@ func playGame() {
     print("\(strike) 스트라이크, \(ball) 볼")
     
     tryCount -= 1
-    if tryCount == 0 {
-        print("컴퓨터 승리...!")
+    if strike == 3 {
+        print("사용자 승리!")
         print("남은 기회 : \(tryCount)")
         return
-    } else if strike == 3 {
-        print("사용자 승리!")
+    } else if tryCount == 0 {
+        print("컴퓨터 승리...!")
         print("남은 기회 : \(tryCount)")
         return
     }
