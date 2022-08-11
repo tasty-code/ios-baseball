@@ -24,6 +24,22 @@ func checkStrikeOrBall(userNumber: Array<Int>) {
     }
 }
 
+func isGameEnd() -> Bool {
+    tryCount -= 1
+    
+    if strike == 3 {
+        print("사용자 승리!")
+        print("남은 기회 : \(tryCount)")
+        return true
+    } else if tryCount == 0 {
+        print("컴퓨터 승리...!")
+        print("남은 기회 : \(tryCount)")
+        return true
+    }
+    
+    return false
+}
+
 func playGame() {
     let userNumber = makeRandomNumber()
     strike = 0
@@ -33,18 +49,10 @@ func playGame() {
     checkStrikeOrBall(userNumber: userNumber)
    
     print("\(strike) 스트라이크, \(ball) 볼")
-    
-    tryCount -= 1
-    if strike == 3 {
-        print("사용자 승리!")
-        print("남은 기회 : \(tryCount)")
-        return
-    } else if tryCount == 0 {
-        print("컴퓨터 승리...!")
-        print("남은 기회 : \(tryCount)")
+    if isGameEnd() {
         return
     }
-    
+   
     print("남은 기회 : \(tryCount)")
     
     playGame()
