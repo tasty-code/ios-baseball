@@ -63,6 +63,7 @@ for i in 1...tryCount {
         print("사용자 승리...!")
     } else if tryCount - i == 0{
         print("컴퓨터 승리...!")
+        break
     }
 
     print("\(judged[0]) 스트라이크, \(judged[1]) 볼")
