@@ -31,7 +31,11 @@ func compareStrikeBall(userNumber: [Int], randonNumber: [Int]) {
     }
     
     remainingChance -= 1
-    print("\(strike) 스트라이크 \(ball) 볼")
+    
+    if remainingChance == 0 {
+        print("컴퓨터 승리...!")
+    }
+    print("\(strike) 스트라이크, \(ball) 볼")
     print("남은 기회 : \(remainingChance)")
 }
 
@@ -41,7 +45,7 @@ func startBaseballGame() {
     while remainingChance != 0 {
         var userNumbers: [Int] = makeRandomNumber()
         
-        print("임의의 수 : ", terminator: " ")
+        print("임의의 수 :", terminator: " ")
         print(userNumbers.map{ String($0) }.joined(separator: " "))
         
         compareStrikeBall(userNumber: userNumbers, randonNumber: randomNumbers)
