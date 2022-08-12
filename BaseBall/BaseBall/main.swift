@@ -34,14 +34,14 @@ func compareComputerNumbers(with userNumbers: [Int]) -> [Int] {
     return [strikeCount, ballCount]
 }
 
-func selectMenu() -> Int{
+func getSelectMenuAnswer() -> Int{
     print("1. 게임 시작\n2. 게임 종료\n원하는 기능을 선택해주세요 : ", terminator: "")
     
     let answer: Int = Int(readLine() ?? "") ?? Int()
     return answer
 }
 
-func checkExistWinner(tryCount: Int, randomNumber: [Int]) -> Bool {
+func ischeckedExistWinner(tryCount: Int, randomNumber: [Int]) -> Bool {
     let strikeBallResult = compareComputerNumbers(with: randomNumber)
 
     if strikeBallResult[0] == 3 {
@@ -62,7 +62,7 @@ func checkExistWinner(tryCount: Int, randomNumber: [Int]) -> Bool {
     return false
 }
 
-func checkUserNumbers(userNumbers numbers: [Int]) -> Bool {
+func ischeckedUserNumbers(userNumbers numbers: [Int]) -> Bool {
     if Array(1...9).contains(numbers[0]) && Array(1...9).contains(numbers[1]) && Array(1...9).contains(numbers[2]) {
         return true
     } else {
@@ -70,7 +70,7 @@ func checkUserNumbers(userNumbers numbers: [Int]) -> Bool {
     }
 }
 
-func playGame(){
+func startPlayGame(){
     computerNumbers = createComputerNumbers()
     var tryCount = 9
 
@@ -78,10 +78,10 @@ func playGame(){
         print("숫자 3개를 띄어쓰기로 구분하여 입력해주세요.\n중복 숫자는 허용하지 않습니다.\n입력 : ", terminator: "")
         let userNumbers = (readLine() ?? "").split(separator: " ").map{Int($0) ?? Int()}
 
-        if checkUserNumbers(userNumbers: userNumbers){
+        if ischeckedUserNumbers(userNumbers: userNumbers){
             tryCount -= 1
 
-            if checkExistWinner(tryCount: tryCount, randomNumber: userNumbers) {
+            if ischeckedExistWinner(tryCount: tryCount, randomNumber: userNumbers) {
                 break
             }
         } else {
@@ -90,18 +90,18 @@ func playGame(){
     }
 }
 
-func startGame() {
+func startBaseBallGame() {
     while true {
-        let menuAnswer = selectMenu()
+        let menuAnswer = getSelectMenuAnswer()
 
         if menuAnswer == 1 {
-            playGame()
-        }else if menuAnswer == 2 {
+            startPlayGame()
+        } else if menuAnswer == 2 {
             return
-        }else {
+        } else {
             print("입력이 잘못되었습니다")
         }
     }
 }
 
-startGame()
+startBaseBallGame()
