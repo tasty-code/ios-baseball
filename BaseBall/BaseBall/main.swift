@@ -63,6 +63,10 @@ func ischeckedExistWinner(tryCount: Int, randomNumber: [Int]) -> Bool {
 }
 
 func ischeckedUserNumbers(userNumbers numbers: [Int]) -> Bool {
+    if numbers == [] {
+        return false
+    }
+    
     if Array(1...9).contains(numbers[0]) && Array(1...9).contains(numbers[1]) && Array(1...9).contains(numbers[2]) {
         return true
     } else {
