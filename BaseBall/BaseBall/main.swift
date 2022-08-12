@@ -62,22 +62,29 @@ func checkExistWinner(tryCount: Int, randomNumber: [Int]) -> Bool {
     return false
 }
 
+func checkUserNumbers(userNumbers numbers: [Int]) -> Bool {
+    if Array(1...9).contains(numbers[0]) && Array(1...9).contains(numbers[1]) && Array(1...9).contains(numbers[2]) {
+        return true
+    } else {
+        return false
+    }
+}
+
 func playGame(){
     computerNumbers = createComputerNumbers()
     var tryCount = 9
 
     while true {
         print("숫자 3개를 띄어쓰기로 구분하여 입력해주세요.\n중복 숫자는 허용하지 않습니다.\n입력 : ", terminator: "")
-        let randomNumber = (readLine() ?? "").split(separator: " ").map{Int($0) ?? Int()}
+        let userNumbers = (readLine() ?? "").split(separator: " ").map{Int($0) ?? Int()}
 
-        if randomNumber.count == 3 {
+        if checkUserNumbers(userNumbers: userNumbers){
             tryCount -= 1
 
-            if checkExistWinner(tryCount: tryCount, randomNumber: randomNumber) {
+            if checkExistWinner(tryCount: tryCount, randomNumber: userNumbers) {
                 break
             }
-            
-        }else {
+        } else {
             print("입력이 잘못되었습니다")
         }
     }
