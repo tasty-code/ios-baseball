@@ -32,16 +32,22 @@ func compareStrikeBall(userNumber: [Int], randonNumber: [Int]) {
     }
     
     remainingChance -= 1
+    print("\(strike) 스트라이크, \(ball) 볼")
+    if strike == 3 {
+        print("사용자 승리!")
+        inputGameMenu()
+    }
     
+    print("남은 기회 : \(remainingChance)")
     if remainingChance == 0 {
         print("컴퓨터 승리...!")
+        inputGameMenu()
     }
-    print("\(strike) 스트라이크, \(ball) 볼")
-    print("남은 기회 : \(remainingChance)")
 }
 
 func startBaseballGame() {
     let randomNumbers: [Int] = makeRandomNumber()
+    remainingChance = 9
     
     while remainingChance != 0 {
         inputUserNumber()
@@ -49,7 +55,6 @@ func startBaseballGame() {
         compareStrikeBall(userNumber: userNumbers, randonNumber: randomNumbers)
         userNumbers.removeAll()
     }
-    remainingChance = 9
 }
 
 func inputGameMenu() {
@@ -78,7 +83,7 @@ func checkGameMene(gameMenu: Int) {
     if gameMenu == 1 {
         startBaseballGame()
     } else if gameMenu == 2 {
-        print("게임종료")
+        exit(0)
     } else {
         inputGameMenu()
     }
@@ -86,23 +91,23 @@ func checkGameMene(gameMenu: Int) {
 
 func checkUserInput(userInput: String) {
     userNumbers.removeAll()
-    var userNumber: Set<Int> = []
+    var userNumber: [Int] = []
     let number = userInput.split(separator: " ")
     
     for num in number {
         if let value = Int(num) {
-            userNumber.insert(value)
+            userNumber.append(value)
         }
     }
     
-    for range in Array<Int>(userNumber) {
+    for range in userNumber {
         if range > 9 || range < 0 {
-            userNumber.remove(range)
+            userNumber.removeFirst()
         }
     }
     
-    if userNumber.count == 3 {
-        userNumbers = Array<Int>(userNumber)
+    if userNumber.count == 3 && Array(Set(userNumber)).count == 3 {
+        userNumbers = userNumber
     } else {
         print("입력이 잘못되었습니다")
         inputUserNumber()
