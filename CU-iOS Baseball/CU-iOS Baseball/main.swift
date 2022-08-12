@@ -1,6 +1,11 @@
 import Foundation
 
 func startGame() {
+    
+    if inputMenu() == false{
+        return
+    }
+    
     var chance: Int = 9
     let gameRandomNumbers: [Int] = getRandomNumbers()
 
@@ -18,6 +23,25 @@ func startGame() {
         print("남은 기회 : \(chance)")
     }
     print("컴퓨터 승리...!")
+}
+
+func inputMenu() -> Bool {
+    print("1. 게임시작")
+    print("2. 게임종료")
+    print("원하는 기능을 선택해주세요 : ",terminator: "")
+    let inputNumber: String = readLine() ?? ""
+    
+    switch inputNumber {
+    case "1":
+        return true
+    case "2":
+        break
+    default:
+        print("입력이 잘못되었습니다")
+        return inputMenu()
+    }
+    
+    return false
 }
 
 func getRandomNumbers() -> [Int] {
