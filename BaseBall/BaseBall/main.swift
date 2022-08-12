@@ -63,7 +63,7 @@ func ischeckedExistWinner(tryCount: Int, randomNumber: [Int]) -> Bool {
 }
 
 func ischeckedUserNumbers(userNumbers numbers: [Int]) -> Bool {
-    if numbers == [] {
+    if numbers == [] || numbers.count != 3 {
         return false
     }
     
