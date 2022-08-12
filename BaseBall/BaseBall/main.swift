@@ -70,7 +70,9 @@ func playGame(){
         if randomNumber.count == 3 {
             tryCount -= 1
 
-            if checkExistWinner(tryCount: tryCount, randomNumber: randomNumber) { break }
+            if checkExistWinner(tryCount: tryCount, randomNumber: randomNumber) {
+                break
+            }
             
         }else {
             print("입력이 잘못되었습니다")
