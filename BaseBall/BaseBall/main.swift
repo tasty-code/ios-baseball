@@ -6,9 +6,9 @@
 //
 import Foundation
 
-var correctNumber = [Int]()
+var computerNumbers = [Int]()
 
-func createRandomNumber() -> [Int] {
+func createComputerNumbers() -> [Int] {
     var randomNumber: [Int] = [Int.random(in: 1...9)]
 
     while randomNumber.count < 3 {
@@ -24,10 +24,10 @@ func compareCorrectNumber(with number: [Int]) -> [Int] {
     var ballCount = 0
 
     for i in 0...2 {
-        if number[i] == correctNumber[i] { strikeCount += 1 }
+        if number[i] == computerNumbers[i] { strikeCount += 1 }
     }
 
-    ballCount = (Set(number).intersection(Set(correctNumber)).count) - strikeCount
+    ballCount = (Set(number).intersection(Set(computerNumbers)).count) - strikeCount
 
     return [strikeCount, ballCount]
 }
@@ -60,7 +60,7 @@ func checkExistWinner(tryCount: Int, randomNumber: [Int]) -> Bool {
 }
 
 func playGame(){
-    correctNumber = createRandomNumber()
+    computerNumbers = createComputerNumbers()
     var tryCount = 9
 
     while true {
