@@ -22,12 +22,13 @@ func createComputerNumbers() -> [Int] {
 func compareComputerNumbers(with userNumbers: [Int]) -> [Int] {
     var strikeCount = 0
     var ballCount = 0
-    let userNumbers = Set(userNumbers)
-    let computerNumbers = Set(computerNumbers)
 
     for i in 0...2 {
         if userNumbers[i] == computerNumbers[i] { strikeCount += 1 }
     }
+
+    let userNumbers = Set(userNumbers)
+    let computerNumbers = Set(computerNumbers)
 
     ballCount = (userNumbers.intersection(computerNumbers).count) - strikeCount
 
@@ -37,7 +38,10 @@ func compareComputerNumbers(with userNumbers: [Int]) -> [Int] {
 func getSelectMenuAnswer() -> Int{
     print("1. 게임 시작\n2. 게임 종료\n원하는 기능을 선택해주세요 : ", terminator: "")
     
-    let answer: Int = Int(readLine() ?? "") ?? Int()
+    guard let answer = Int(readLine()) ?? Int() else {
+        fatalError()
+    }
+    
     return answer
 }
 
@@ -80,7 +84,12 @@ func startPlayGame(){
 
     while true {
         print("숫자 3개를 띄어쓰기로 구분하여 입력해주세요.\n중복 숫자는 허용하지 않습니다.\n입력 : ", terminator: "")
-        let userNumbers = (readLine() ?? "").split(separator: " ").map{Int($0) ?? Int()}
+        
+        let userNumbers = readLine()?.split(separator: " ").map{Int($0) ?? Int()}
+        
+        guard let userNumbers = userNumbers else {
+            fatalError()
+        }
 
         if ischeckedUserNumbers(userNumbers: userNumbers){
             tryCount -= 1
