@@ -19,15 +19,17 @@ func createComputerNumbers() -> [Int] {
     return randomNumber
 }
 
-func compareCorrectNumber(with number: [Int]) -> [Int] {
+func compareComputerNumbers(with userNumbers: [Int]) -> [Int] {
     var strikeCount = 0
     var ballCount = 0
+    let userNumbersSet = Set(userNumbers)
+    let computerNumbersSet = Set(computerNumbers)
 
     for i in 0...2 {
-        if number[i] == computerNumbers[i] { strikeCount += 1 }
+        if userNumbers[i] == computerNumbers[i] { strikeCount += 1 }
     }
 
-    ballCount = (Set(number).intersection(Set(computerNumbers)).count) - strikeCount
+    ballCount = (userNumbersSet.intersection(computerNumbersSet).count) - strikeCount
 
     return [strikeCount, ballCount]
 }
@@ -39,7 +41,7 @@ func selectMenu() -> Int{
 }
 
 func checkExistWinner(tryCount: Int, randomNumber: [Int]) -> Bool {
-    let strikeBallResult = compareCorrectNumber(with: randomNumber)
+    let strikeBallResult = compareComputerNumbers(with: randomNumber)
 
     if strikeBallResult[0] == 3 {
         print("사용자 승리...!")
