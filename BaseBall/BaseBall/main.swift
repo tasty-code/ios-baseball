@@ -46,7 +46,7 @@ func playGame(){
         print("숫자 3개를 띄어쓰기로 구분하여 입력해주세요.\n중복 숫자는 허용하지 않습니다.\n입력 : ", terminator: "")
         let randomNumber = readLine()!.split(separator: " ").map{Int($0)!}
 
-        if randomNumber.count == 3{
+        if randomNumber.count == 3 {
             tryCount -= 1
 
             let ballAndStrike = compareCorrectNumber(with: randomNumber)
