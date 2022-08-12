@@ -1,61 +1,64 @@
-//
-//  main.swift
-//  baseballgame
-//
-//  Created by 박도원 on 2022/08/10.
-//
-
 import Foundation
+    
+var chance = 9
+var computerNumbers: [Int] = []
+var computerSetNumbers: Set<Int> = []
+var userNumbers: [Int] = []
+var userSetNumbers: Set<Int> = []
+var strikeCount = 0
+var ballCount = 0
 
-
-var attempt = 9
-var randomArray: [Int] = []
-var overlapArray:Set<Int> = []
-var input_numbers: [Int] = []
-
-var strike_count = 0
-var ball_count = 0
-
-func comparison(){
-    for index in 0...2{
-        if input_numbers[index] == randomArray[index]{
-            strike_count += 1
-        }else if randomArray.contains(input_numbers[index]){
-            ball_count += 1
-        }
-    }
-}
-
-while overlapArray.count < 3 {
-    let num = Int.random(in: 1...9)
-    overlapArray.insert(num)
-}
-randomArray = Array<Int>(overlapArray)
-print(randomArray)
-
-for _ in 1...9 {
-
-    while input_numbers.count < 3 {
+func makeCoputerNums() {
+    while computerSetNumbers.count < 3 {
         let num = Int.random(in: 1...9)
-        input_numbers.append(num)
+        computerSetNumbers.insert(num)
     }
-    print("임의의 수 : \(input_numbers)")
+    computerNumbers = Array(computerSetNumbers)
+}
+
+func comparisonNumbers() {
+    while userSetNumbers.count < 3 {
+        let num = Int.random(in: 1...9)
+        userSetNumbers.insert(num)
+    }
     
-    comparison()
+    userNumbers = Array(userSetNumbers)
+    print("임의의 수 : \(userNumbers[0]) \(userNumbers[1]) \(userNumbers[2])")
     
-    print ("\(strike_count) 스트라이크, \(ball_count) 볼")
-    
-    input_numbers = []
-    attempt-=1
-    
-    print("남은 기회 : \(attempt)")
-    
-    if strike_count == 3 {
-        print("정답")
-        break
-    }else if attempt == 0 {
+    if chance == 1 {
         print("컴퓨터 승리...!")
     }
-    strike_count = 0
-    ball_count = 0
+    
+    for index in 0...2 {
+        if userNumbers[index] == computerNumbers[index]{
+            strikeCount += 1
+        }else if computerNumbers.contains(userNumbers[index]){
+            ballCount += 1
+        }
+    }
+    print ("\(strikeCount) 스트라이크, \(ballCount) 볼")
 }
+
+func gameStart() {
+    makeCoputerNums()
+
+    for _ in 1...9 {
+        comparisonNumbers()
+        
+        userSetNumbers = []
+        chance -= 1
+        
+        print("남은 기회 : \(chance)")
+
+        if strikeCount == 3 {
+            print("정답")
+            break
+        }
+        
+        strikeCount = 0
+        ballCount = 0
+    }
+}
+
+gameStart()
+    
