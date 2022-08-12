@@ -2,4 +2,4 @@
 숫자야구 프로젝트 저장소입니다. 
 
 Flow Chart<br>
-<img width="379" alt="스크린샷 2022-08-11 오전 11 09 44" src="https://user-images.githubusercontent.com/84975077/184053434-04d65d9b-d3d7-4986-b991-bcc4ccf283b1.png">
+<img width="380" alt="스크린샷 2022-08-12 오후 2 37 24" src="https://user-images.githubusercontent.com/84975077/184291445-7e337e58-2bd5-4026-90f5-5b9e8a2d219d.png">
