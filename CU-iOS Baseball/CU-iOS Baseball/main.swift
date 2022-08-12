@@ -1,7 +1,6 @@
 import Foundation
 
 func startGame() {
-    
     if inputMenu() == false{
         return
     }
@@ -10,19 +9,20 @@ func startGame() {
     let gameRandomNumbers: [Int] = getRandomNumbers()
 
     while chance > 0 {
-        let userRandomNumbers: [Int] = getRandomNumbers()
-        print("임의의 수 : \(userRandomNumbers[0]) \(userRandomNumbers[1]) \(userRandomNumbers[2])")
-        let roundResult: String = compare(gameRandomNumbers, and: userRandomNumbers)
+        let userNumbers: [Int] = getUserNumbers()
+        let roundResult: String = compare(gameRandomNumbers, and: userNumbers)
         
         if roundResult == "win" {
             print("사용자 승리!")
-            return
+            return startGame()
         }
         
         chance -= 1
         print("남은 기회 : \(chance)")
     }
+    
     print("컴퓨터 승리...!")
+    return startGame()
 }
 
 func inputMenu() -> Bool {
@@ -55,6 +55,31 @@ func getRandomNumbers() -> [Int] {
     
     let randomNumbersToReturn = Array(randomNumbers)
     return randomNumbersToReturn
+}
+
+func getUserNumbers() -> [Int] {
+    print("숫자 3개를 띄어쓰기로 구분하여 입력해주세요.")
+    print("중복 숫자는 허용하지 않습니다.")
+    print("입력 : ",terminator: "")
+    let userNumbers: String = readLine() ?? ""
+    let userNumbersToIntArray: [Int] = userNumbers.split(separator: " ").map { Int($0) ?? 0 }
+    let duplicateElementCheck: Set<Int> = Set(userNumbersToIntArray)
+    var numbersValidCheck: Bool = true
+    
+    if duplicateElementCheck.count != 3 {
+        numbersValidCheck = false
+    }
+    for element in duplicateElementCheck {
+        if element < 1 || element > 9 {
+            numbersValidCheck = false
+        }
+    }
+    if numbersValidCheck == false {
+        print("입력이 잘못되었습니다")
+        return getUserNumbers()
+    }
+    
+    return userNumbersToIntArray
 }
 
 func compare(_ gameRandomNumbers: [Int], and userNumbers: [Int]) -> String {
