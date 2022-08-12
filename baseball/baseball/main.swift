@@ -54,4 +54,14 @@ func startBaseballGame() {
     remainingChance = 9
 }
 
-startBaseballGame()
+func inputGameMenu() {
+    print("1. 게임시작")
+    print("2. 게임종료")
+    print("원하는 기능을 선택해주세요 : ", terminator: "")
+    let input = readLine()
+    if let menu = Int(input ?? "0") {
+        print(menu)
+    }
+}
+
+inputGameMenu()
