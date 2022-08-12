@@ -22,14 +22,14 @@ func createComputerNumbers() -> [Int] {
 func compareComputerNumbers(with userNumbers: [Int]) -> [Int] {
     var strikeCount = 0
     var ballCount = 0
-    let userNumbersSet = Set(userNumbers)
-    let computerNumbersSet = Set(computerNumbers)
+    let userNumbers = Set(userNumbers)
+    let computerNumbers = Set(computerNumbers)
 
     for i in 0...2 {
         if userNumbers[i] == computerNumbers[i] { strikeCount += 1 }
     }
 
-    ballCount = (userNumbersSet.intersection(computerNumbersSet).count) - strikeCount
+    ballCount = (userNumbers.intersection(computerNumbers).count) - strikeCount
 
     return [strikeCount, ballCount]
 }
