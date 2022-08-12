@@ -54,6 +54,13 @@ func checkExistWinner(tryCount: Int, randomNumber: [Int]) -> Bool {
     return false
 }
 
+
+func selectMenu() -> Int{
+    print("1. 게임 시작\n2. 게임 종료\n원하는 기능을 선택해주세요 : ", terminator: "")
+    let answer = Int(readLine()!)!
+    return answer
+}
+
 func startGame() {
     correctNumber = createRandomNumber()
     while tryCount > 0 {
