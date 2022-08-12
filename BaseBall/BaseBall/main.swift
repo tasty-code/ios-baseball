@@ -36,7 +36,8 @@ func compareComputerNumbers(with userNumbers: [Int]) -> [Int] {
 
 func selectMenu() -> Int{
     print("1. 게임 시작\n2. 게임 종료\n원하는 기능을 선택해주세요 : ", terminator: "")
-    let answer = Int(readLine()!)!
+    
+    let answer: Int = Int(readLine() ?? "") ?? Int()
     return answer
 }
 
@@ -67,7 +68,7 @@ func playGame(){
 
     while true {
         print("숫자 3개를 띄어쓰기로 구분하여 입력해주세요.\n중복 숫자는 허용하지 않습니다.\n입력 : ", terminator: "")
-        let randomNumber = readLine()!.split(separator: " ").map{Int($0)!}
+        let randomNumber = (readLine() ?? "").split(separator: " ").map{Int($0) ?? Int()}
 
         if randomNumber.count == 3 {
             tryCount -= 1
