@@ -53,11 +53,9 @@ func getUserNumbers() -> [Int] {
             }
         }
         
-        if isDuplicatedNumbers(userNumbers: userNumbers) {
-            print("111")
+        if isDuplicatedNumbers(userNumbers: userNumbers) || isNumbersRangeCorrect(userNumbers: userNumbers) {
+            print("\n\n")
         }
-        
-        
     }
     
     return userNumbers
@@ -71,6 +69,16 @@ func checkStrikeOrBall(userNumbers: [Int]) {
             ball += 1
         }
     }
+}
+
+func isNumbersRangeCorrect(userNumbers: [Int]) -> Bool {
+    for i in userNumbers {
+        if i < 1 || i > 9 {
+            return true
+        }
+    }
+    
+    return false
 }
 
 func isDuplicatedNumbers(userNumbers: [Int]) -> Bool {
