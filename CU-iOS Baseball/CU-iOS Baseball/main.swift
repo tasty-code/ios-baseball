@@ -1,18 +1,12 @@
 import Foundation
 
-startingGame()
-
-func startingGame() {
-
+func startGame() {
     var chance: Int = 9
     let gameRandomNumbers: [Int] = getRandomNumbers()
 
     while chance > 0 {
-
         let userRandomNumbers: [Int] = getRandomNumbers()
-        
         print("임의의 수 : \(userRandomNumbers[0]) \(userRandomNumbers[1]) \(userRandomNumbers[2])")
-
         let roundResult: String = compare(gameRandomNumbers, and: userRandomNumbers)
         
         if roundResult == "win" {
@@ -23,23 +17,19 @@ func startingGame() {
         chance -= 1
         print("남은 기회 : \(chance)")
     }
-
     print("컴퓨터 승리...!")
 }
 
 func getRandomNumbers() -> [Int] {
-
     var randomNumbers: Set<Int> = Set<Int>()
 
     while randomNumbers.count < 3 {
-
         let randomNum: Int = Int.random(in: 1...9)
 
         randomNumbers.insert(randomNum)
     }
     
     let randomNumbersToReturn = Array(randomNumbers)
-    
     return randomNumbersToReturn
 }
 
@@ -48,7 +38,6 @@ func compare(_ gameRandomNumbers: [Int], and userNumbers: [Int]) -> String {
     var ballCount: Int = 0
     var roundResult: String = ""
     
-
     for i in 0...2 {
         if gameRandomNumbers[i] == userNumbers[i] {
             strikeCount += 1
@@ -64,6 +53,8 @@ func compare(_ gameRandomNumbers: [Int], and userNumbers: [Int]) -> String {
     } else {
         roundResult = "lose"
     }
-
+    
     return roundResult
 }
+
+startGame()
