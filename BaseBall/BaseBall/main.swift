@@ -38,6 +38,27 @@ func selectMenu() -> Int{
     return answer
 }
 
+func checkExistWinner(tryCount: Int, randomNumber: [Int]) -> Bool {
+    let strikeBallResult = compareCorrectNumber(with: randomNumber)
+
+    if strikeBallResult[0] == 3 {
+        print("사용자 승리...!")
+    }
+
+    if tryCount == 0 {
+        print("컴퓨터 승리...!")
+    }
+
+    print("\(strikeBallResult[0]) 스트라이크, \(strikeBallResult[1]) 볼")
+    print("남은 기회 : \(tryCount)")
+
+    if strikeBallResult[0] == 3 || tryCount == 0 {
+        return true
+    }
+
+    return false
+}
+
 func playGame(){
     correctNumber = createRandomNumber()
     var tryCount = 9
@@ -49,19 +70,8 @@ func playGame(){
         if randomNumber.count == 3 {
             tryCount -= 1
 
-            let ballAndStrike = compareCorrectNumber(with: randomNumber)
-
-            if ballAndStrike[0] == 3 {
-                print("사용자 승리...!")
-                break
-            }
-
-            if tryCount == 0 {
-                print("컴퓨터 승리...!")
-                break
-            }
-            print("\(ballAndStrike[0]) 스트라이크, \(ballAndStrike[1]) 볼")
-            print("남은 기회 : \(tryCount)")
+            if checkExistWinner(tryCount: tryCount, randomNumber: randomNumber) { break }
+            
         }else {
             print("입력이 잘못되었습니다")
         }
