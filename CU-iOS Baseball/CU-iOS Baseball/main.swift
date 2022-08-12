@@ -64,17 +64,17 @@ func getUserNumbers() -> [Int] {
     let userNumbers: String = readLine() ?? ""
     let userNumbersToIntArray: [Int] = userNumbers.split(separator: " ").map { Int($0) ?? 0 }
     let duplicateElementCheck: Set<Int> = Set(userNumbersToIntArray)
-    var numbersValidCheck: Bool = true
+    var isValidNumbers: Bool = true
     
     if duplicateElementCheck.count != 3 {
-        numbersValidCheck = false
+        isValidNumbers = false
     }
     for element in duplicateElementCheck {
         if element < 1 || element > 9 {
-            numbersValidCheck = false
+            isValidNumbers = false
         }
     }
-    if numbersValidCheck == false {
+    if isValidNumbers == false {
         print("입력이 잘못되었습니다")
         return getUserNumbers()
     }
