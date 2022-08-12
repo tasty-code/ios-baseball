@@ -7,6 +7,7 @@
 import Foundation
 
 var remainingChance: Int = 9
+var userNumbers: [Int] = []
 
 func makeRandomNumber() -> [Int] {
     var randomNumber: Set<Int> = []
@@ -43,10 +44,7 @@ func startBaseballGame() {
     let randomNumbers: [Int] = makeRandomNumber()
     
     while remainingChance != 0 {
-        var userNumbers: [Int] = makeRandomNumber()
-        
-        print("임의의 수 :", terminator: " ")
-        print(userNumbers.map{ String($0) }.joined(separator: " "))
+        inputUserNumber()
         
         compareStrikeBall(userNumber: userNumbers, randonNumber: randomNumbers)
         userNumbers.removeAll()
@@ -73,7 +71,7 @@ func inputUserNumber() {
     
     let input = readLine()
     let numbers = input ?? "0"
-    print(numbers.split(separator: " "))
+    checkUserInput(userInput: numbers)
 }
 
 func checkGameMene(gameMenu: Int) {
@@ -83,6 +81,31 @@ func checkGameMene(gameMenu: Int) {
         print("게임종료")
     } else {
         inputGameMenu()
+    }
+}
+
+func checkUserInput(userInput: String) {
+    userNumbers.removeAll()
+    var userNumber: Set<Int> = []
+    let number = userInput.split(separator: " ")
+    
+    for num in number {
+        if let value = Int(num) {
+            userNumber.insert(value)
+        }
+    }
+    
+    for range in Array<Int>(userNumber) {
+        if range > 9 || range < 0 {
+            userNumber.remove(range)
+        }
+    }
+    
+    if userNumber.count == 3 {
+        userNumbers = Array<Int>(userNumber)
+    } else {
+        print("입력이 잘못되었습니다")
+        inputUserNumber()
     }
 }
 
