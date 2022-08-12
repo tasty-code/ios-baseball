@@ -14,6 +14,28 @@ func makeRandomNumbers() -> [Int] {
     return Array(nonduplicateNumbers)
 }
 
+func getUserNumbers() -> [Int] {
+    var userNumbers: [Int] = []
+    while userNumbers.count != 3 {
+        userNumbers = []
+        
+        print("숫자 3개를 띄어쓰기로 구분하여 입력해주세요.")
+        print("중복 숫자는 허용하지 않습니다.")
+        print("입력 : ", terminator: "")
+        
+        let inputNumbers = readLine()?.split(separator: " ")
+        let unwrappedNumbers: Array<Substring> = inputNumbers ?? []
+        
+        for i in unwrappedNumbers {
+            if let number = Int(i) {
+                userNumbers.append(number)
+            }
+        }
+    }
+    
+    return userNumbers
+}
+
 func checkStrikeOrBall(userNumbers: [Int]) {
     for i in 0...2 {
         if userNumbers[i] == randomNumbers[i] {
@@ -41,7 +63,7 @@ func isGameEnd() -> Bool {
 }
 
 func startGame() {
-    let userNumbers = makeRandomNumbers()
+    let userNumbers = getUserNumbers()
     strike = 0
     ball = 0
 
