@@ -60,7 +60,9 @@ func inputGameMenu() {
     print("원하는 기능을 선택해주세요 : ", terminator: "")
     let input = readLine()
     if let menu = Int(input ?? "0") {
-        print(menu)
+        checkGameMene(gameMenu: menu)
+    } else {
+        checkGameMene(gameMenu: 0)
     }
 }
 
@@ -74,4 +76,14 @@ func inputUserNumber() {
     print(numbers.split(separator: " "))
 }
 
-inputUserNumber()
+func checkGameMene(gameMenu: Int) {
+    if gameMenu == 1 {
+        startBaseballGame()
+    } else if gameMenu == 2 {
+        print("게임종료")
+    } else {
+        inputGameMenu()
+    }
+}
+
+inputGameMenu()
