@@ -6,12 +6,11 @@
 //
 import Foundation
 
-var correctNumber = [Int]()
-var tryCount = 9
+var computerNumbers = [Int]()
 
-func createRandomNumber() -> [Int] {
+func createComputerNumbers() -> [Int] {
     var randomNumber: [Int] = [Int.random(in: 1...9)]
-    
+
     while randomNumber.count < 3 {
         randomNumber.append(Int.random(in: 1...9))
         randomNumber = Array(Set(randomNumber))
@@ -20,50 +19,102 @@ func createRandomNumber() -> [Int] {
     return randomNumber
 }
 
-func compareCorrectNumber(with number: [Int]) -> [Int] {
+func compareComputerNumbers(with userNumbers: [Int]) -> [Int] {
     var strikeCount = 0
     var ballCount = 0
-    
+
     for i in 0...2 {
-        if number[i] == correctNumber[i] { strikeCount += 1 }
+        if userNumbers[i] == computerNumbers[i] { strikeCount += 1 }
     }
-    
-    ballCount = (Set(number).intersection(Set(correctNumber)).count) - strikeCount
-    
+
+    let userNumbers = Set(userNumbers)
+    let computerNumbers = Set(computerNumbers)
+
+    ballCount = (userNumbers.intersection(computerNumbers).count) - strikeCount
+
     return [strikeCount, ballCount]
 }
 
-func checkExistWinner(tryCount: Int, randomNumber: [Int]) -> Bool {
-    let strikeBallResult = compareCorrectNumber(with: randomNumber)
+func getSelectMenuAnswer() -> Int{
+    print("1. 게임 시작\n2. 게임 종료\n원하는 기능을 선택해주세요 : ", terminator: "")
     
+    guard let answer = readLine() else {
+        fatalError()
+    }
+    
+    return Int(answer) ?? Int()
+}
+
+func ischeckedExistWinner(tryCount: Int, randomNumber: [Int]) -> Bool {
+    let strikeBallResult = compareComputerNumbers(with: randomNumber)
+
     if strikeBallResult[0] == 3 {
         print("사용자 승리...!")
     }
-    
+
     if tryCount == 0 {
         print("컴퓨터 승리...!")
     }
-    
+
     print("\(strikeBallResult[0]) 스트라이크, \(strikeBallResult[1]) 볼")
     print("남은 기회 : \(tryCount)")
-    
+
     if strikeBallResult[0] == 3 || tryCount == 0 {
         return true
     }
-    
+
     return false
 }
 
-func startGame() {
-    correctNumber = createRandomNumber()
-    while tryCount > 0 {
-        tryCount -= 1
-        
-        let randomNumber = createRandomNumber()
-        print("임의의 수 : \(randomNumber.map{ String($0) }.joined(separator: " "))")
-        
-        if checkExistWinner(tryCount: tryCount, randomNumber: randomNumber) { break }
+func ischeckedUserNumbers(userNumbers numbers: [Int]) -> Bool {
+    if numbers == [] || numbers.count != 3 {
+        return false
+    }
+    
+    if Array(1...9).contains(numbers[0]) && Array(1...9).contains(numbers[1]) && Array(1...9).contains(numbers[2]) {
+        return true
+    } else {
+        return false
     }
 }
 
-startGame()
+func startPlayGame(){
+    computerNumbers = createComputerNumbers()
+    var tryCount = 9
+
+    while true {
+        print("숫자 3개를 띄어쓰기로 구분하여 입력해주세요.\n중복 숫자는 허용하지 않습니다.\n입력 : ", terminator: "")
+        
+        let userNumbers = readLine()?.split(separator: " ").map{Int($0) ?? Int()}
+        
+        guard let userNumbers = userNumbers else {
+            fatalError()
+        }
+
+        if ischeckedUserNumbers(userNumbers: userNumbers){
+            tryCount -= 1
+
+            if ischeckedExistWinner(tryCount: tryCount, randomNumber: userNumbers) {
+                break
+            }
+        } else {
+            print("입력이 잘못되었습니다")
+        }
+    }
+}
+
+func startBaseBallGame() {
+    while true {
+        let menuAnswer = getSelectMenuAnswer()
+
+        if menuAnswer == 1 {
+            startPlayGame()
+        } else if menuAnswer == 2 {
+            return
+        } else {
+            print("입력이 잘못되었습니다")
+        }
+    }
+}
+
+startBaseBallGame()
