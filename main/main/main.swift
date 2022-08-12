@@ -1,8 +1,29 @@
 import Foundation
 
-let randomNumbers: [Int] = makeRandomNumbers()
+var randomNumbers: [Int] = []
 var tryCount: Int = 9
 var strike = 0, ball = 0
+
+func showMenu() {
+    while true {
+        randomNumbers = makeRandomNumbers()
+        tryCount = 9
+        
+        print("1. 게임시작")
+        print("2. 게임종료")
+        print("원하는 기능을 선택해주세요 : ", terminator: "")
+        
+        let inputMenuNumber = readLine()
+        
+        if inputMenuNumber == "1" {
+            startGame()
+        } else if inputMenuNumber == "2" {
+            break
+        } else {
+            print("입력이 잘못되었습니다.")
+        }
+    }
+}
 
 func makeRandomNumbers() -> [Int] {
     var nonduplicateNumbers: Set<Int> = []
@@ -62,6 +83,8 @@ func isGameEnd() -> Bool {
     return false
 }
 
+
+
 func startGame() {
     let userNumbers = getUserNumbers()
     strike = 0
@@ -80,5 +103,5 @@ func startGame() {
     startGame()
 }
 
-startGame()
+showMenu()
 
