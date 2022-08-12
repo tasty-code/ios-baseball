@@ -38,11 +38,11 @@ func compareComputerNumbers(with userNumbers: [Int]) -> [Int] {
 func getSelectMenuAnswer() -> Int{
     print("1. 게임 시작\n2. 게임 종료\n원하는 기능을 선택해주세요 : ", terminator: "")
     
-    guard let answer = Int(readLine()) ?? Int() else {
+    guard let answer = readLine() else {
         fatalError()
     }
     
-    return answer
+    return Int(answer) ?? Int()
 }
 
 func ischeckedExistWinner(tryCount: Int, randomNumber: [Int]) -> Bool {
