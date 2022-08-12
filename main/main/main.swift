@@ -29,7 +29,7 @@ func makeRandomNumbers() -> [Int] {
     var nonduplicateNumbers: Set<Int> = []
 
     while nonduplicateNumbers.count < 3 {
-        nonduplicateNumbers.update(with: Int.random(in: 1...9))
+        nonduplicateNumbers.insert(Int.random(in: 1...9))
     }
 
     return Array(nonduplicateNumbers)
@@ -52,6 +52,8 @@ func getUserNumbers() -> [Int] {
                 userNumbers.append(number)
             }
         }
+        
+        
     }
     
     return userNumbers
