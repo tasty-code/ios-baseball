@@ -53,6 +53,10 @@ func getUserNumbers() -> [Int] {
             }
         }
         
+        if isDuplicatedNumber(userNumbers: userNumbers) {
+            print("111")
+        }
+        
         
     }
     
@@ -67,6 +71,20 @@ func checkStrikeOrBall(userNumbers: [Int]) {
             ball += 1
         }
     }
+}
+
+func isDuplicatedNumber(userNumbers: [Int]) -> Bool {
+    var removedDuplicateNumbers: [Int] = []
+    
+    for i in userNumbers {
+        if removedDuplicateNumbers.contains(i) {
+            return true
+        }
+        
+        removedDuplicateNumbers.append(i)
+    }
+    
+    return false
 }
 
 func isGameEnd() -> Bool {
