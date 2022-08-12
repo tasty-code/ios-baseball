@@ -37,7 +37,7 @@ func makeRandomNumbers() -> [Int] {
 
 func getUserNumbers() -> [Int] {
     var userNumbers: [Int] = []
-    while userNumbers.count != 3 {
+    while true {
         userNumbers = []
         
         print("숫자 3개를 띄어쓰기로 구분하여 입력해주세요.")
@@ -53,9 +53,12 @@ func getUserNumbers() -> [Int] {
             }
         }
         
-        if isDuplicatedNumbers(userNumbers: userNumbers) || isNumbersRangeCorrect(userNumbers: userNumbers) {
-            print("\n\n")
+        if isDuplicatedNumbers(userNumbers: userNumbers) || isNumbersRangeCorrect(userNumbers: userNumbers) || userNumbers.count != 3 {
+            print("입력이 잘못되었습니다.")
+            continue
         }
+        
+        break
     }
     
     return userNumbers
