@@ -114,8 +114,6 @@ func isGameEnd() -> Bool {
     return false
 }
 
-
-
 func startGame() {
     let userNumbers = getUserNumbers()
     strike = 0
