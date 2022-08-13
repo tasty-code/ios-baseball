@@ -8,6 +8,8 @@ import Foundation
 
 var remainingChance: Int = 9
 var userNumbers: [Int] = []
+var strike = 0
+var ball = 0
 
 func makeRandomNumber() -> [Int] {
     var randomNumber: Set<Int> = []
@@ -20,9 +22,8 @@ func makeRandomNumber() -> [Int] {
 }
 
 func compareStrikeBall(userNumber: [Int], randonNumber: [Int]) {
-    var strike = 0
-    var ball = 0
-    
+    strike = 0
+    ball = 0
     for i in 0...2 {
         if randonNumber[i] == userNumber[i] {
             strike += 1
@@ -30,8 +31,11 @@ func compareStrikeBall(userNumber: [Int], randonNumber: [Int]) {
             ball += 1
         }
     }
-    
     remainingChance -= 1
+    judgmentGameOver()
+}
+
+func judgmentGameOver() {
     print("\(strike) 스트라이크, \(ball) 볼")
     if strike == 3 {
         print("사용자 승리!")
