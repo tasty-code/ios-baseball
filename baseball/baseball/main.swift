@@ -11,56 +11,6 @@ var userNumbers: [Int] = []
 var strike = 0
 var ball = 0
 
-func makeRandomNumber() -> [Int] {
-    var randomNumber: Set<Int> = []
-    
-    while randomNumber.count < 3 {
-        let number = Int.random(in: 1...9)
-        randomNumber.insert(number)
-    }
-    return Array<Int>(randomNumber)
-}
-
-func compareStrikeBall(userNumber: [Int], randonNumber: [Int]) {
-    strike = 0
-    ball = 0
-    for i in 0...2 {
-        if randonNumber[i] == userNumber[i] {
-            strike += 1
-        } else if randonNumber.contains(userNumber[i]) {
-            ball += 1
-        }
-    }
-    remainingChance -= 1
-    judgmentGameOver()
-}
-
-func judgmentGameOver() {
-    print("\(strike) 스트라이크, \(ball) 볼")
-    if strike == 3 {
-        print("사용자 승리!")
-        inputGameMenu()
-    }
-    
-    print("남은 기회 : \(remainingChance)")
-    if remainingChance == 0 {
-        print("컴퓨터 승리...!")
-        inputGameMenu()
-    }
-}
-
-func startBaseballGame() {
-    let randomNumbers: [Int] = makeRandomNumber()
-    remainingChance = 9
-    
-    while remainingChance != 0 {
-        inputUserNumber()
-        
-        compareStrikeBall(userNumber: userNumbers, randonNumber: randomNumbers)
-        userNumbers.removeAll()
-    }
-}
-
 func inputGameMenu() {
     print("1. 게임시작")
     print("2. 게임종료")
@@ -114,6 +64,56 @@ func checkUserInput(userInput: String) {
     } else {
         print("입력이 잘못되었습니다")
         inputUserNumber()
+    }
+}
+
+func startBaseballGame() {
+    let randomNumbers: [Int] = makeRandomNumber()
+    remainingChance = 9
+    
+    while remainingChance != 0 {
+        inputUserNumber()
+        
+        compareStrikeBall(userNumber: userNumbers, randonNumber: randomNumbers)
+        userNumbers.removeAll()
+    }
+}
+
+func makeRandomNumber() -> [Int] {
+    var randomNumber: Set<Int> = []
+    
+    while randomNumber.count < 3 {
+        let number = Int.random(in: 1...9)
+        randomNumber.insert(number)
+    }
+    return Array<Int>(randomNumber)
+}
+
+func compareStrikeBall(userNumber: [Int], randonNumber: [Int]) {
+    strike = 0
+    ball = 0
+    for i in 0...2 {
+        if randonNumber[i] == userNumber[i] {
+            strike += 1
+        } else if randonNumber.contains(userNumber[i]) {
+            ball += 1
+        }
+    }
+    remainingChance -= 1
+    judgmentGameOver()
+}
+
+func judgmentGameOver() {
+    print("\(strike) 스트라이크, \(ball) 볼")
+    if strike == 3 {
+        print("사용자 승리!")
+        inputGameMenu()
+    }
+    
+    print("남은 기회 : \(remainingChance)")
+    if remainingChance == 0 {
+        print("컴퓨터 승리...!")
+        inputGameMenu()
     }
 }
 
