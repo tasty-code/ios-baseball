@@ -94,23 +94,23 @@ func checkGameMene(gameMenu: Int) {
 
 func checkUserInput(userInput: String) {
     userNumbers.removeAll()
-    var userNumber: [Int] = []
+    var checkUserNumbers: [Int] = []
     let number = userInput.split(separator: " ")
     
     for num in number {
         if let value = Int(num) {
-            userNumber.append(value)
+            checkUserNumbers.append(value)
         }
     }
     
-    for range in userNumber {
+    for range in checkUserNumbers {
         if range > 9 || range < 0 {
-            userNumber.removeFirst()
+            checkUserNumbers.removeFirst()
         }
     }
     
-    if userNumber.count == 3 && Array(Set(userNumber)).count == 3 {
-        userNumbers = userNumber
+    if checkUserNumbers.count == 3 && Array(Set(checkUserNumbers)).count == 3 {
+        userNumbers = checkUserNumbers
     } else {
         print("입력이 잘못되었습니다")
         inputUserNumber()
