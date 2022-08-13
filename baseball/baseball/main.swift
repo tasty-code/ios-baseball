@@ -65,8 +65,8 @@ func inputGameMenu() {
     print("1. 게임시작")
     print("2. 게임종료")
     print("원하는 기능을 선택해주세요 : ", terminator: "")
-    let input = readLine()
-    if let menu = Int(input ?? "0") {
+    guard let input = readLine() else { return }
+    if let menu = Int(input) {
         checkGameMene(gameMenu: menu)
     } else {
         checkGameMene(gameMenu: 0)
@@ -78,9 +78,8 @@ func inputUserNumber() {
     print("중복 숫자는 허용하지 않습니다.")
     print("입력 : ", terminator: "")
     
-    let input = readLine()
-    let numbers = input ?? "0"
-    checkUserInput(userInput: numbers)
+    guard let input = readLine() else { return }
+    checkUserInput(userInput: input)
 }
 
 func checkGameMene(gameMenu: Int) {
