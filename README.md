@@ -1,35 +1,25 @@
-<style>
-	.index {
-		font-size: 18px
-	}
-	h1 {
-		margin-top: 24px;
-	}
-	h2 {
-		margin-top: 36px;
-	}
-</style>
 # ios-baseball
 Swift를 사용한 숫자야구 게임 프로그램입니다.
 
 #
-- <span class="index">[FlowChart](#flowchart)</span> 
-- <span class="index">[STEP 1](#step-1)</span>
-- <span class="index">[STEP 2](#step-2)</span>
-- <span class="index">[구현 화면](#구현-화면)</span>
+- #### <span class="index" style="font-size: 98px;">[FlowChart](#flowchart)</span> 
+- #### <span class="index">[STEP 1](#step-1)</span>
+- #### <span class="index">[STEP 2](#step-2)</span>
+- #### <span class="index">[구현 화면](#구현-화면)</span>
 
-
-
+<br><br><br>
 # FlowChart
 
 <img alt="스크린샷 2022-08-14 오후 7 03 56" src="https://user-images.githubusercontent.com/84975077/184532027-ffa4be4e-6598-4891-8ac9-47561ca31bcb.png">
 
 
+<br><br><br>
 # STEP 1
  ### 기본 기능 구현
  - 중복 되지 않는 3개의 정수를 만드는 `makeRandomNumbers` 함수 구현
  - 게임을 시작하는 `startGame` 함수 구현
 
+<br><br><br>
 # STEP 2
  ### 사용자 입력 구현
 - 사용자 메뉴를 입력 받는 `showMenu` 함수 구현
@@ -38,6 +28,7 @@ Swift를 사용한 숫자야구 게임 프로그램입니다.
 - 스트라이크와 볼을 확인 하는 `checkStrikeOrBall` 함수 구현
 - 게임이 끝나는 상황인지 확인하는 `isGameEnd` 함수 구현
 
+<br><br><br>
 # 구현 화면
  
 ## 1. 사용자 메뉴 화면
