@@ -28,7 +28,9 @@
 # 실행 결과
  ### inputGameMenu 함수
  <img width="185" alt="스크린샷 2022-08-15 오후 3 36 32" src="https://user-images.githubusercontent.com/110806745/184588444-497a8aff-ddf7-473a-9810-79583b505811.png">
+<br/>
  ### inputUserNumber 함수
  <img width="253" alt="스크린샷 2022-08-15 오후 3 41 24" src="https://user-images.githubusercontent.com/110806745/184588458-eb6086d3-2df9-4ed1-8a70-d724bbaf156f.png">
+<br/>
  ### startBaseballGame 함수
  <img width="291" alt="스크린샷 2022-08-15 오후 3 41 56" src="https://user-images.githubusercontent.com/110806745/184588470-8e9ba65e-ab7f-402e-adf0-585431b43aa2.png">
