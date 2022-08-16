@@ -2,10 +2,10 @@
 Swift를 사용한 숫자야구 게임 프로그램입니다.
 
 #
-- #### <span class="index" style="font-size: 98px;">[FlowChart](#flowchart)</span> 
-- #### <span class="index">[STEP 1](#step-1)</span>
-- #### <span class="index">[STEP 2](#step-2)</span>
-- #### <span class="index">[구현 화면](#구현-화면)</span>
+- #### <span class="index">[FlowChart](#flowchart-1)</span> 
+- #### <span class="index">[STEP 1](#step-1-1)</span>
+- #### <span class="index">[STEP 2](#step-2-1)</span>
+- #### <span class="index">[구현 화면](#구현-화면-1)</span>
 
 <br><br><br>
 # FlowChart
