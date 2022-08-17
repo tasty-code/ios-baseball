@@ -12,3 +12,20 @@ func numberReturn() -> Array<Int>{
     }
     return [aNumber, bNumber, cNumber]
 }
+
+func user() -> Array<Int>{
+    
+    var aNumberComparison : Int = 0
+    var bNumberComparison : Int = 0
+    var cNumberComparison : Int = 0
+    
+    
+    while (aNumberComparison == bNumberComparison || bNumberComparison == cNumberComparison || aNumberComparison == cNumberComparison) {
+        aNumberComparison = Int.random(in: 1...9)
+        bNumberComparison = Int.random(in: 1...9)
+        cNumberComparison = Int.random(in: 1...9)
+    }
+    
+    return [aNumberComparison, bNumberComparison, cNumberComparison]
+    
+}
