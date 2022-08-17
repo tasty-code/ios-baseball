@@ -29,3 +29,40 @@ func user() -> Array<Int>{
     return [aNumberComparison, bNumberComparison, cNumberComparison]
     
 }
+
+func comparison() -> Array<Int> {
+    let recall : Array<Int> = numberReturn()
+    let recall1 : Array<Int> = user()
+    
+    var strike : Int = 0
+    var ball : Int = 0
+    
+        
+        
+    if recall[0] == recall1[0] {
+        strike += 1
+    }
+    else if recall[0] == recall1[1] || recall[0] == recall1[2] {
+        ball += 1
+    }
+    
+    if recall[1] == recall1[1] {
+        strike += 1
+    }
+    else if recall[1] == recall1[0] || recall[1] == recall1[2] {
+        ball += 1
+    }
+    
+    if recall[2] == recall1[2] {
+        strike += 1
+    }
+    else if recall[2] == recall1[0] || recall[2] == recall1[1] {
+        ball += 1
+    }
+    
+    if strike == 3 {
+        print("사용자 승리")
+    }
+    
+    return [strike , ball]
+}
