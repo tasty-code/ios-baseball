@@ -66,3 +66,12 @@ func comparison() -> Array<Int> {
     
     return [strike , ball]
 }
+
+for i in (0 ... 8).reversed() {
+    print("임의의 수", numberReturn())
+    print(comparison()[0], "스트라이크" , comparison()[1] ,"볼" )
+    print("남은 기회:" , i)
+    if i == 0 {
+        print("컴퓨터 승리")
+    }
+}
