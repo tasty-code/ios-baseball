@@ -59,3 +59,34 @@ func comparison(computernumber: [Int], usernumber: [Int]) -> [Int] {
     
     return [strike , ball]
 }
+
+func startGame() -> [[Int]] {
+    var returnvalue : [[Int]] = .init()
+    
+    for chance in (0...8).reversed() {
+        let computernumber : [Int] = computerNumber()
+        let usernumber : [Int] = userNumber()
+        let comparions : [Int] = comparison(computernumber: computernumber, usernumber: usernumber)
+        returnvalue = [computernumber, usernumber, comparions]
+        if returnvalue[2] == [3,0] {
+            print("사용자 승리!")
+        }
+        else if chance == 0 {
+            print("임의의 수",  returnvalue[0].compactMap{ String($0).description }.joined(separator: " "))
+            print("컴퓨터 승리...!")
+            print(returnvalue[2][0],"스트라이크,",returnvalue[2][1],"볼")
+            print("남은 기회:", chance)
+        }
+        else {
+            print("임의의 수",  returnvalue[0].compactMap{ String($0).description }.joined(separator: " "))
+            print(returnvalue[2][0],"스트라이크,",returnvalue[2][1],"볼")
+            print("남은 기회:", chance)
+        }
+        
+        
+    }
+    
+    return returnvalue
+}
+
+startGame()
