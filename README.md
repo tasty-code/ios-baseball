@@ -1,6 +1,7 @@
 # ios-baseball
 숫자야구 프로젝트 저장소입니다. 
 
+<<<<<<< HEAD
 
 ## 함수
 ---
@@ -30,4 +31,6 @@ compactMap 라는 고차함수를 써서 해결했다
 
 
 ## 순서도
+=======
+>>>>>>> 9ee45776817c3e21ee341b07e0ea3c4bd7399d82
 <img src="https://media.discordapp.net/attachments/793123892888600616/1009637056386969651/F0232A69-1413-4827-A415-81A1E45491AD.jpeg?width=440&height=857">
